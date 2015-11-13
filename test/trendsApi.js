@@ -4,8 +4,8 @@ let Promise = require('bluebird');
 let trendsApi = require('../lib/trendsApi.js');
 
 trendsApi.getTrends()
-.then(data () => {
+.then(data => {
   console.log(data);
-},err () => {
+},err => {
   throw err;
 });
