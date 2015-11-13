@@ -8,3 +8,15 @@ body {
 .full {
   height: 100%;
 }
+
+.playerProfile {
+	width:20%;
+	height:25%;
+	float:left;
+}
+
+.profiles {
+	width:20%;
+	height:100%;
+
+}
