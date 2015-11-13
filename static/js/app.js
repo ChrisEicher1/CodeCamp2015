@@ -24,9 +24,9 @@ var newGame = function()
   	var row3 = $('<div class=row3></div>')
   	div.appendTo('#content');
   	playDiv.appendTo('#content');
-  	row1.appendTo('#content');
-  	row2.appendTo('#content');
-  	row3.appendTo('#content');
+  	row1.appendTo(playDiv);
+  	row2.appendTo(playDiv);
+  	row3.appendTo(playDiv);
   	profileDiv.appendTo(".row");
 }
 
