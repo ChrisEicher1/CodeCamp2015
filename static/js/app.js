@@ -6,9 +6,7 @@ var updateGif = function(req)
 	if ($("#" + req.id).length){
 		$("#"+req.id).attr('src', req.url);
 	} else {
-		console.log("You dun.");
 		var newImg = $('<img id="'+req.id+'" src="'+req.url+'">');
-		console.log(newImg);
 		newImg.appendTo('#profileDiv');
 	}
 }
@@ -16,18 +14,18 @@ var updateGif = function(req)
 var newGame = function()
 {
 	$('#content').empty();
-	var div = $('<div class="row full"></div>')
+	var mainRow = $('<div class="row full"></div>')
   	var profileDiv = $('<div id="profileDiv" class="col s3"></div>');
   	var playDiv = $('<div class="col s9"></div>');
   	var row1 = $('<div class=row1></div>')
   	var row2 = $('<div class=row2></div>')
   	var row3 = $('<div class=row3></div>')
-  	div.appendTo('#content');
+  	mainRow.appendTo('#content');
   	playDiv.appendTo('#content');
   	row1.appendTo(playDiv);
   	row2.appendTo(playDiv);
   	row3.appendTo(playDiv);
-  	profileDiv.appendTo(".row");
+  	profileDiv.appendTo(mainRow);
 }
 
 var socket = io();  
