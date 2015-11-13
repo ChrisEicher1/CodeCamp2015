@@ -19,7 +19,14 @@ var newGame = function()
 	var div = $('<div class="row full"></div>')
   	var profileDiv = $('<div id="profileDiv" class="col s3"></div>');
   	var playDiv = $('<div class="col s9"></div>');
+  	var row1 = $('<div class=row1></div>')
+  	var row2 = $('<div class=row2></div>')
+  	var row3 = $('<div class=row3></div>')
   	div.appendTo('#content');
+  	playDiv.appendTo('#content');
+  	row1.appendTo('#content');
+  	row2.appendTo('#content');
+  	row3.appendTo('#content');
   	profileDiv.appendTo(".row");
 }
 
