@@ -52,7 +52,7 @@ var newGame = function()
   	card = createCard("test")
     $('#input_text').keyup(function (evt) {
       if (evt.keyCode == 13) {
-        socket.emit('new_gif', { room: game_room, key: evt.target.value })
+        socket.emit('new_gif', { room: game_room, query: evt.target.value })
         evt.target.value = '';
       }
     })
