@@ -47,7 +47,7 @@ var newGame = function()
   	card.appendTo("#row2");
     $('#input_text').keyup(function (evt) {
       if (evt.keyCode == 13) {
-        socket.emit('new_gif', { room_id: game_room, key: evt.target.value })
+        socket.emit('new_gif', { room: game_room, query: evt.target.value })
         evt.target.value = '';
       }
     })
