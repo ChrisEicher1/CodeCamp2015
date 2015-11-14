@@ -15,7 +15,7 @@ var updateGif = function(req)
 
 var createCard = function(s)
 {
-	var card = $('<div class="col s2 z-depth-3 full valign-wrapper"><h5 class="valign">'+s+'</h5></div>');
+	var card = $('<div class="card col s2 z-depth-3 full valign-wrapper"><h5 class="valign">'+s+'</h5></div>');
 	return card;
 }
 
@@ -41,10 +41,15 @@ var newGame = function()
   	row2.appendTo(playDiv);
   	row3.appendTo(playDiv);
   	input.appendTo(profileDiv);
-  	var card = createCard("testCard");
+  	var card = createCard("testCard1-1");
   	card.appendTo('#row3');
-  	card = createCard("testCard2");
+  	card = createCard("testCard2-1");
   	card.appendTo("#row2");
+  	card = createCard("testCard2-2")
+  	card.appendTo("#row2");
+  	card = createCard("testCard1-2")
+  	card.appendTo("#row3");
+  	card = createCard("test")
     $('#input_text').keyup(function (evt) {
       if (evt.keyCode == 13) {
         socket.emit('new_gif', { room: game_room, query: evt.target.value })

@@ -20,3 +20,8 @@ body {
 #row3 {
 	height:33%;
 }
+
+.card {
+	float:left;
+	height:95%;
+}
