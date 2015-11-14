@@ -42,11 +42,11 @@ var newGame = function()
   	row3.appendTo(playDiv);
   	input.appendTo(profileDiv);
   	var card = createCard("testCard1-1");
+  	$('#row3').click(function (evt) {
+  		socket.emit('card_played', { room: game_room, key: evt.target.outerText });
+        evt.stopPropagation();
+  	});
   	card.appendTo('#row3');
-  	card = createCard("testCard2-1");
-  	card.appendTo("#row2");
-  	card = createCard("testCard2-2")
-  	card.appendTo("#row2");
   	card = createCard("testCard1-2")
   	card.appendTo("#row3");
   	card = createCard("test")
