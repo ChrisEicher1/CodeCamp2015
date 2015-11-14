@@ -1,5 +1,7 @@
 console.log('Script has loaded');
 
+var socket = io();
+var game_room;
 
 var updateGif = function(req)
 {
@@ -43,15 +45,18 @@ var newGame = function()
   	card.appendTo('#row3');
   	card = createCard("testCard2");
   	card.appendTo("#row2");
+    $('#input_text').keyup(function (evt) {
+      if (evt.keyCode == 13) {
+        socket.emit('new_gif', { room_id: game_room, key: evt.target.value })
+        evt.target.value = '';
+      }
+    })
 }
 
-var socket = io();  
-socket.on('gameCreated', function(data){
+socket.on('gameCreated', function(msg){
+  game_room = msg.game_id
   newGame();
   //updateGif({ id: '765', url: 'https://media.giphy.com/media/13zZ0FyrgNWwLu/giphy.gif' })
-
-
   //updateGif({ id: '123', url: 'https://media.giphy.com/media/13NBiMh0Z7pqta/giphy.gif' })
 })
-
 socket.on('gif', updateGif);
