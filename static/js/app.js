@@ -21,7 +21,7 @@ var createCard = function(s)
 
 var dealCard = function(card)
 {
-	var c = createCard(card.value);
+	var c = createCard(card);
 	c.click(function (evt) {
   		socket.emit('card_played', { room: game_room, key: evt.target.outerText });
         evt.stopPropagation();
@@ -67,4 +67,4 @@ socket.on('gameCreated', function(msg){
 })
 socket.on('gif', updateGif);
 
-socket.on('deal', dealCards);
+socket.on('deal', dealCard);
