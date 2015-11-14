@@ -19,6 +19,16 @@ var createCard = function(s)
 	return card;
 }
 
+var dealCard = function(card)
+{
+	var c = createCard(card.value);
+	c.click(function (evt) {
+  		socket.emit('card_played', { room: game_room, key: evt.target.outerText });
+        evt.stopPropagation();
+  	});
+  	c.appendTo('#row3');
+}
+
 var newGame = function()
 {
 	$('#content').empty();
@@ -41,15 +51,6 @@ var newGame = function()
   	row2.appendTo(playDiv);
   	row3.appendTo(playDiv);
   	input.appendTo(profileDiv);
-  	var card = createCard("testCard1-1");
-  	$('#row3').click(function (evt) {
-  		socket.emit('card_played', { room: game_room, key: evt.target.outerText });
-        evt.stopPropagation();
-  	});
-  	card.appendTo('#row3');
-  	card = createCard("testCard1-2")
-  	card.appendTo("#row3");
-  	card = createCard("test")
     $('#input_text').keyup(function (evt) {
       if (evt.keyCode == 13) {
         socket.emit('new_gif', { room: game_room, query: evt.target.value })
@@ -65,3 +66,5 @@ socket.on('gameCreated', function(msg){
   //updateGif({ id: '123', url: 'https://media.giphy.com/media/13NBiMh0Z7pqta/giphy.gif' })
 })
 socket.on('gif', updateGif);
+
+socket.on('deal', dealCards);
