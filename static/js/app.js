@@ -6,26 +6,43 @@ var updateGif = function(req)
 	if ($("#" + req.id).length){
 		$("#"+req.id).attr('src', req.url);
 	} else {
-		var newImg = $('<img id="'+req.id+'" src="'+req.url+'">');
+		var newImg = $('<img class="col s12" id="'+req.id+'" src="'+req.url+'">');
 		newImg.appendTo('#profileDiv');
 	}
+}
+
+var createCard = function(s)
+{
+	var card = $('<div class="col s2 z-depth-3 full valign-wrapper"><h5 class="valign">'+s+'</h5></div>');
+	return card;
 }
 
 var newGame = function()
 {
 	$('#content').empty();
-	var mainRow = $('<div class="row full"></div>')
   	var profileDiv = $('<div id="profileDiv" class="col s3"></div>');
   	var playDiv = $('<div class="col s9"></div>');
-  	var row1 = $('<div class=row1></div>')
-  	var row2 = $('<div class=row2></div>')
-  	var row3 = $('<div class=row3></div>')
-  	mainRow.appendTo('#content');
+  	var row1 = $('<div class="row" id="row1"></div>')
+  	var row2 = $('<div class="row" id="row2"></div>')
+  	var row3 = $('<div class="row" id="row3"></div>')
+  	var input = $('<div class="input-field col s12">'+
+            	'<input id="input_text" type="text" length="10">'+
+            	'<label for="input_text">Change gif</label>'+
+          		'</div>');
+  	var rowHeight = Math.floor($(document).height() / 3.5);
+  	profileDiv.appendTo('#content');
   	playDiv.appendTo('#content');
+  	row1.height(rowHeight);
+  	row2.height(rowHeight);
+  	row3.height(rowHeight);
   	row1.appendTo(playDiv);
   	row2.appendTo(playDiv);
   	row3.appendTo(playDiv);
-  	profileDiv.appendTo(mainRow);
+  	input.appendTo(profileDiv);
+  	var card = createCard("testCard");
+  	card.appendTo('#row3');
+  	card = createCard("testCard2");
+  	card.appendTo("#row2");
 }
 
 var socket = io();  
